@@ -77,20 +77,22 @@ main .input{
 }
 .sun,
 .moon{
-    width: 3%;
-    height: 3%;
+    width: 4%;
+    height: 4%;
 }
 
 /* main container */
 
 .mainContainer{
-    max-width: 55rem;
+    max-width: 59rem;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 .container{
     min-height: 50vh;
     background-color: hsl(236, 15%, 21%);
     margin-top: -4rem;
+    max-width: 55rem;
 }
 .items{
     border-bottom: 1px solid hsl(234, 11%, 52%);
@@ -115,8 +117,11 @@ main .input{
     display: flex;
     justify-content: space-between;
     width: 30%;
+    gap: 10px;
 }
-
+.filItems{
+    display: none;
+}
 /* footer */
 
 footer{
@@ -128,14 +133,32 @@ footer{
 
 
 /* media query */
-@media all and (max-width:560px) {
+
+@media all and (max-width:420px) {
     header{
         background: url('../images/bg-mobile-dark.jpg');
         background-size: cover;
         background-repeat: no-repeat;
     }
-    .mainContainer{
+    .filterItems {
+        display: none;
+    }
+    .filterItem{
         padding: 0 2rem;
+        max-width: 55rem;
+        height: 10vh;
+    }
+    .filItems{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 2rem auto;
+        font-size: 1.3rem;
+        color: hsl(234, 11%, 52%);
+        background-color: hsl(236, 15%, 21%);
+        height: 5vh;
+        border-radius: 5px;
     }
 }
+
 
