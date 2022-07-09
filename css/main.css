@@ -4,7 +4,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* border: 2px solid red; */
 }
 
 body{
@@ -87,11 +86,11 @@ main .input{
     max-width: 59rem;
     margin: 0 auto;
     padding: 0 2rem;
+    margin-top: -3rem;
 }
 .container{
     min-height: 50vh;
     background-color: hsl(236, 15%, 21%);
-    margin-top: -4rem;
     max-width: 55rem;
 }
 .items{
