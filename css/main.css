@@ -1,25 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&family=Overpass:wght@300;600&family=Poppins:wght@100;200;300;400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* border: 2px solid red; */
 }
 
 body{
     width: 100%;
     height: 100vh;
-    background-image: url('../images/bg-desktop-dark.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: black;
+    background-color: hsl(235, 21%, 11%);
+    font-family: 'Josefins', sans-serif;
+    color: hsl(234, 39%, 85%);
+}
+html{
+    font-size: 62.5%;
 }
 
 
+/* generel styling */
 
+h1{
+    color: white;
+    font-size: 3rem;
+    letter-spacing: 1rem;
+}
+p{
+    display: inline-block;
+    font-size: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+/* header */
+
+header{
+    background-image: url('../images/bg-desktop-dark.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 25vh;
+    padding: 0 2rem;
+}
+main{
+    max-width: 55rem;   
+    height: 20%;
+    margin: 0 auto;
+}
+.mainHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 55rem;
+    padding-top: 6rem;
+}
+.mainInput{
+    width: 100%;
+    margin-top: 2rem;
+    height: 5vh;
+    padding-left: 1.5rem;
+    background-color: hsl(236, 15%, 21%);
+    border-radius: 5px;
+}
+main .input{
+    width: 96%;
+    height: 100%;
+    background-color: hsl(236, 15%, 21%);
+    padding-left: 2rem ;
+    border: none;
+}
+.moon{
+    display: none;
+}
+.sun,
+.moon{
+    width: 3%;
+    height: 3%;
+}
+
+/* main container */
+
+.mainContainer{
+    max-width: 55rem;
+    margin: 0 auto;
+}
+.container{
+    min-height: 50vh;
+    background-color: hsl(236, 15%, 21%);
+    margin-top: -4rem;
+}
+.items{
+    border-bottom: 1px solid hsl(234, 11%, 52%);
+    width: 100%;
+    margin-top: 0;
+    height: 5vh;
+    padding: 1.5rem;
+    border-radius: 0%;
+    display: flex;
+    align-items: center;
+}
+.filterSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 1.5rem;
+    color: hsl(234, 11%, 52%);
+    font-size: 1.2rem;
+    word-spacing: .2rem;
+}
+.filterItems{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+/* footer */
+
+footer{
+    text-align: center;
+    font-size: 1.2rem;
+    padding-top: 3rem;
+    color: hsl(234, 11%, 52%);;
+}
+
+
+/* media query */
 @media all and (max-width:560px) {
-    body{
+    header{
         background: url('../images/bg-mobile-dark.jpg');
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
+    }
+    .mainContainer{
+        padding: 0 2rem;
     }
 }
 

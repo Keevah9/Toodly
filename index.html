@@ -16,10 +16,11 @@
       <div class="mainHeader">
         <h1>TODO</h1>
         <img src="./images/icon-sun.svg" alt="icon-moon" class="sun">
-        <img src="./images/icon-moon.svg" alt="icon-sun" class="sun">
+        <img src="./images/icon-moon.svg" alt="icon-sun" class="moon">
       </div>
       <div class="mainInput">
-        <input type="checkbox" placeholder="Create a new todo...">
+        <input type="checkbox" class="box"> 
+        <input type="text" placeholder="Create a new todo..." class="input">
       </div>
 
     </main>
@@ -29,37 +30,46 @@
   <!-- main container -->
 
   <section class="mainContainer">
+    <div class="container">
+        <div class="checkBoxes ">
+        
+          <div class="items ">
+            <input type="checkbox">
+            <p></p>
+          </div>
+        
+          <div class="items">
+            <input type="checkbox">
+            <p></p>
+          </div>
 
-    <div class="checkBoxes">
+          <div class="items">
+            <input type="checkbox">
+            <p>etrdthfjgk</p>
+          </div>
 
-      <div class="items">
-        <input type="checkbox">
-        <p></p>
-      </div>
-
-      <div class="items">
-        <input type="checkbox">
-        <p></p>
-      </div>
-
+          
+        
+        </div>
+        
+        <div class="filterSection">
+          <div class="time">
+            <h4><span id="itemLeft"></span> Items left</h4>
+          </div>
+        
+          <div class="filterItems">
+            <h4>All</h4>
+            <h4>Active</h4>
+            <h4>Completed</h4>
+          </div>
+        
+          <div class="completed">
+            <h4>Clear Completed</h4>
+          </div>
+        
+        </div>
     </div>
-
-    <div class="filterSection">
-      <div class="time">
-        <h4><span id="itemLeft"></span> items left</h4>
-      </div>
-
-      <div class="filterItems">
-        <h4>All</h4>
-        <h4>Active</h4>
-        <h4>Completed</h4>
-      </div>
-
-      <div class="completed">
-        <h4>Clear Completed</h4>
-      </div>
-
-    </div>
+    
   </section>
  
 
