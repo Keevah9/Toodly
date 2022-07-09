@@ -54,7 +54,7 @@ main{
     padding-top: 8rem;
 }
 .mainInput{
-    width: 100%;
+    max-width: 100%;
     margin-top: 2rem;
     min-height: 5vh;
     padding-left: 1.5rem;
@@ -66,10 +66,12 @@ main{
 }
 main .input{
     width: 96%;
-    height: 100%;
+    height: 4vh;
     background-color: hsl(236, 15%, 21%);
     padding-left: 2rem ;
     border: none;
+    outline: none;
+    color: hsl(234, 39%, 85%);
 }
 .moon{
     display: none;
@@ -129,7 +131,6 @@ footer{
     padding-top: 3rem;
     color: hsl(234, 11%, 52%);;
 }
-
 
 /* media query */
 
