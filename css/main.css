@@ -44,7 +44,7 @@ header{
 }
 main{
     max-width: 55rem;   
-    height: 20%;
+    height: 20vh;
     margin: 0 auto;
 }
 .mainHeader{
@@ -57,10 +57,13 @@ main{
 .mainInput{
     width: 100%;
     margin-top: 2rem;
-    height: 5vh;
+    min-height: 5vh;
     padding-left: 1.5rem;
     background-color: hsl(236, 15%, 21%);
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 main .input{
     width: 96%;
