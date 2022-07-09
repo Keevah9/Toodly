@@ -38,7 +38,7 @@ header{
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 25vh;
+    min-height: 30vh;
     padding: 0 2rem;
 }
 main{
@@ -51,7 +51,7 @@ main{
     justify-content: space-between;
     align-items: center;
     max-width: 55rem;
-    padding-top: 6rem;
+    padding-top: 8rem;
 }
 .mainInput{
     width: 100%;
@@ -76,8 +76,8 @@ main .input{
 }
 .sun,
 .moon{
-    width: 4%;
-    height: 4%;
+    width: 3rem;
+    height: 3rem;
 }
 
 /* main container */
@@ -86,7 +86,7 @@ main .input{
     max-width: 59rem;
     margin: 0 auto;
     padding: 0 2rem;
-    margin-top: -3rem;
+    margin-top: -5rem;
 }
 .container{
     min-height: 50vh;
