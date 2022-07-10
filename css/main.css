@@ -12,6 +12,7 @@ body{
     background-color: hsl(235, 21%, 11%);
     font-family: 'Josefins', sans-serif;
     color: hsl(234, 39%, 85%);
+    
 }
 html{
     font-size: 62.5%;
@@ -26,9 +27,9 @@ h1{
     letter-spacing: 1rem;
 }
 p{
-    display: inline-block;
+    flex-basis: 94%;
     font-size: 1.5rem;
-    padding-left: 1.5rem;
+    padding: 1.5rem 2rem;
 }
 
 /* header */
@@ -51,13 +52,14 @@ main{
     justify-content: space-between;
     align-items: center;
     max-width: 55rem;
-    padding-top: 7rem;
+    padding-top: 9rem;
 }
 .mainInput{
     max-width: 100%;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     min-height: 5vh;
     padding-left: 1.5rem;
+    padding-bottom: 0;
     background-color: hsl(236, 15%, 21%);
     border-radius: 5px;
     display: flex;
@@ -66,9 +68,10 @@ main{
 }
 main .input{
     width: 96%;
-    height: 4vh;
+    height: auto;
+    padding: 1.5rem 2rem;
     background-color: hsl(236, 15%, 21%);
-    padding-left: 2rem ;
+    
     border: none;
     outline: none;
     color: hsl(234, 39%, 85%);
@@ -88,10 +91,11 @@ main .input{
     max-width: 59rem;
     margin: 0 auto;
     padding: 0 2rem;
-    margin-top: -5rem;
+    margin-top: -4rem;
+    min-height: 5vh;
 }
 .container{
-    min-height: 50vh;
+    min-height: 5vh;
     background-color: hsl(236, 15%, 21%);
     max-width: 55rem;
 }
@@ -99,10 +103,10 @@ main .input{
     border-bottom: 1px solid hsl(234, 11%, 52%);
     width: 100%;
     margin-top: 0;
-    height: 5vh;
-    padding: 1.5rem;
-    border-radius: 0%;
+    min-height: 5vh;
+    padding: 0 1.5rem;
     display: flex;
+    /* justify-content: space-between; */
     align-items: center;
 }
 .filterSection{
@@ -115,6 +119,7 @@ main .input{
     word-spacing: .2rem;
 }
 .filterItems{
+    padding-top: 5rem;
     display: flex;
     justify-content: space-between;
     width: 30%;
@@ -123,13 +128,34 @@ main .input{
 .filItems{
     display: none;
 }
+.items img {
+    display: none;
+    padding-left: 1.2rem;
+}
+
+.items:hover img {
+    display: block;
+}
+.edit{
+    width: 3rem;
+    height: 2rem;
+}
+#errMsg{
+    display: block;
+    min-width: 100%;
+    height: 1vh;
+    font-size: 1.5rem;
+    text-align: center;
+    color: red;
+    font-weight: 400;
+}
 
 /* footer */
 
 footer{
     text-align: center;
     font-size: 1.2rem;
-    padding-top: 3rem;
+    padding-top:2rem;
     color: hsl(234, 11%, 52%);;
 }
 
@@ -153,7 +179,8 @@ footer{
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin: 2rem auto;
+        margin: 3rem auto;
+        margin-bottom: 0;
         font-size: 1.3rem;
         color: hsl(234, 11%, 52%);
         background-color: hsl(236, 15%, 21%);
@@ -164,7 +191,7 @@ footer{
         padding-top: 4rem;
     }
     .mainContainer{
-        margin-top: -1;
+        margin-top: -2rem;
     }
 }
 
