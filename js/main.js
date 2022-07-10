@@ -19,7 +19,7 @@ let todoData = []
 
 //input validation
 function inputValidation(e){
-    // e.preventDefault()
+    e.preventDefault()
     if(this.checked){
         if(textInput.value === ''){
         errMsg.innerHTML = 'Can not be empty!!!'
