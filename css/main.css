@@ -51,7 +51,7 @@ main{
     justify-content: space-between;
     align-items: center;
     max-width: 55rem;
-    padding-top: 8rem;
+    padding-top: 7rem;
 }
 .mainInput{
     max-width: 100%;
@@ -123,6 +123,7 @@ main .input{
 .filItems{
     display: none;
 }
+
 /* footer */
 
 footer{
@@ -158,6 +159,12 @@ footer{
         background-color: hsl(236, 15%, 21%);
         height: 5vh;
         border-radius: 5px;
+    }
+    .mainHeader{
+        padding-top: 4rem;
+    }
+    .mainContainer{
+        margin-top: -1;
     }
 }
 
