@@ -19,7 +19,7 @@ let todoData = []
 
 //input validation
 function inputValidation(e){
-    e.preventDefault()
+    // e.preventDefault()
     if(this.checked){
         if(textInput.value === ''){
         errMsg.innerHTML = 'Can not be empty!!!'
@@ -63,8 +63,8 @@ function addTasks(){
             <label for="checkbox"></label>
             
             <p>${a.desc}</p>
-            <img src="./images/icon-cross.svg" alt="" onClick= deleteItem(this)>
             <img src="./images/1159633.png" alt="" class="edit" onClick="editItem(this)">
+            <img src="./images/icon-cross.svg" alt="" onClick= deleteItem(this)>
           </div>
         
         `)
