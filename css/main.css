@@ -138,7 +138,9 @@ main .input{
 .filItems{
     display: none;
 }
-
+.complete p{
+    text-decoration: line-through;
+}
 /* error alert */
 #errMsg{
     display: block;

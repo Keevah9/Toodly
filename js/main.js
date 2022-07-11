@@ -1,107 +1,164 @@
-// select classes
-//create empty array
-//formValidation
-//add info to array
-//set local storage
-//dynamic html on dom
-//delete
-//edit
-//get localstorage
+//add new todos
+    //take in an input value
+    //validate the input
+    //if success, add to array and display onto dom || alert err
+//mark todo as complete
+//delete item
+//edit item
+//filter items by all, active, completed
+//delete all completed items    
+//toggle themes
 
+let todoItems = []
 
+const addText = document.querySelector('#addText')
 const textInput = document.querySelector('.input')
-const addText = document.getElementById('addText')
-const content = document.querySelector('p')
-const lists = document.querySelector('.checkBoxes')
-const errMsg = document.getElementById('errMsg')
+const errMsg = document.querySelector('#errMsg')
 
-let todoData = []
-
-//input validation
+//validate input
 function inputValidation(e){
     e.preventDefault()
     if(this.checked){
         if(textInput.value === ''){
-        errMsg.innerHTML = 'Can not be empty!!!'
-        // errMsg.style.border = '2px solid red'
-        }
-        else{
-            // console.log('task')
-            errMsg.innerHTML = ''
-            // errMsg.style.border = 'none'
-            addTodoData()
+            errMsg.innerHTML = 'Can not be empty'
+        }else{
+        errMsg.innerHTML = ''
+        pushData()
+        textInput.value = ''
         }
         
     }
-    if(!this.checked){
-        const test = textInput.value
-        test === ''
-    }
-
+    textInput.focus()
     addTasks()
-
 }
 
-//add data  to todo array
-function addTodoData(){
-    todoData.push({
-        desc: textInput.value,    
+//push data into array and store in local storage
+function pushData(){
+    todoItems.push({
+        desc: textInput.value,
     })
-
-    localStorage.setItem('todoData', JSON.stringify(todoData))
+    localStorage.setItem("todoItems", JSON.stringify(todoItems))
+    console.log(todoItems)
 }
 
+let parentItem = document.querySelector('.checkBoxes')
 
-
+//dynamically add items to the dom
 function addTasks(){
-    lists.innerHTML = ''
-    let displayLists = todoData.map((a)=>{
-        return(lists.innerHTML +=`
-            <div class="items ">
-            <input type="checkbox" class="checkBox">
-            
-            <label for="checkbox"></label>
-            
-            <p>${a.desc}</p>
-            <img src="./images/1159633.png" alt="" class="edit" onClick="editItem(this)">
-            <img src="./images/icon-cross.svg" alt="" onClick= deleteItem(this)>
-          </div>
-        
-        `)
+    parentItem.innerHTML = ''
+    let displayItems =  todoItems.map(a => {
+        return ( parentItem.innerHTML += `
+        <div class="items ">
+        <input type="checkbox" class="checkBox">
+      
+         <label for="checkbox"></label>
+      
+        <p>${a.desc}</p>
+        <img src="./images/1159633.png" alt="" class="edit" onclick="editItems(this)">
+        <img src="./images/icon-cross.svg" alt="" class="delete" onclick="delItem(this)" >
+      </div>
+    `)
+    })
+    displayItems = displayItems.join('')
+    
+}
+
+
+//check items
+function checked(e){
+    let checkBoxes = document.querySelectorAll('.checkBox')
+    checkBoxes.forEach(item=>{
+        if(e.target !== item)return
+        if(e.target.checked){
+            let checkedTask = e.target.parentNode
+            checkedTask.classList.toggle('complete')
+            console.log(checkedTask)
+        }else{
+            let checkedTask = e.target.parentNode
+            checkedTask.classList.remove('complete')
+        }
+    })
+}
+
+//completed items ? checked
+function complete(e){
+    console.log(e)
+    const checkedTask = Array.from(document.querySelectorAll('.items'))
+    checkedTask.forEach(task=>{
+        task.classList.contains('complete') ? task.style.display = 'flex' : task.style.display = 'none'
     })
 
-    resetInput()
-    displayLists = displayLists.join('')
-    // lists.innerHTML = displayLists  
+    localStorage.setItem("todoItems", JSON.stringify(todoItems))
 }
 
-
-function resetInput(){
-    textInput.value = '' //reset input value
+//active items ? unckecked
+const active = document.querySelector('.active')
+function activeItems(e){
+    const checkedTask = Array.from(document.querySelectorAll('.items'))
+    checkedTask.forEach(item=>{
+        item.classList.contains('complete') ? item.style.display = 'none' : item.style.display = 'flex'
+    })
 }
 
-function deleteItem(del){
-    // console.log(del)
-    del.parentElement.remove() // remove the node item from innerHtml
-    todoData.splice(del.parentElement.id, 1) // remove item from our array
+//all items
+function allItems(e){
+    console.log(e)
+     const checkedTask = Array.from(document.querySelectorAll('.items'))
+     checkedTask.forEach(item=>{
+         console.log(item)
+         item.style.display = 'flex' 
+     })
+}
 
-    localStorage.setItem('todoDaTa', JSON.stringify(todoData)) // remove from localstorage
+//clear completed tasks
+const clearCompleted = document.querySelector('.clear')
+function clearAll(){
+    let checkedTask = Array.from(document.querySelectorAll('.items'))
+    checkedTask.forEach(item=>{
+        item.remove()
+    })
+}
+
+//del items
+function delItem(del){
+        del.parentElement.remove()
+        localStorage.setItem("todoItems", JSON.stringify(todoItems))
+        todoItems.splice(del.parentElement.remove(),1)
+        console.log(todoItems)
 }
 
 //edit items
-function editItem(edit){
-    let selectItem = edit.parentElement
-    console.log(selectItem.children)
-    textInput.value = selectItem.children[2].innerHTML
-
-    deleteItem(edit)
+function editItems(edit){
+        let selectItem = edit.parentElement
+        textInput.value = selectItem.children[2].innerHTML
+        delItem(edit)
 }
 
-//get items
+//get local storage
 function dataStored(){
-    todoData = JSON.parse(localStorage.getItem('todoData')) || []
+    todoItems =  JSON.parse(localStorage.getItem("todoItems")) || []
     addTasks()
 }
 dataStored()
 
+
 addText.addEventListener('click', inputValidation)
+parentItem.addEventListener('click', checked)
+clearCompleted.addEventListener('click', clearAll)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

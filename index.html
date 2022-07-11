@@ -26,7 +26,21 @@
         <!-- <label for="checkbox"></label> -->
         <input type="text" placeholder="Create a new todo..." class="input">
       </div>
-     
+      <!-- <div class="checkboxes">
+
+      </div> -->
+
+      <!-- <div class="items ">
+        <input type="checkbox" class="checkBox">
+      
+         <label for="checkbox"></label>
+      
+        <p>${a.desc}</p>
+        <img src="./images/1159633.png" alt="" class="edit" onClick="editItem(this)">
+        <img src="./images/icon-cross.svg" alt="" onClick=deleteItem(this)>
+      </div> -->
+      
+      
     </main>
 
 
@@ -46,12 +60,12 @@
           </div>
       
           <div class="filterItems">
-            <h4 class="all">All</h4>
-            <h4 class="active">Active</h4>
-            <h4 class="done">Completed</h4>
+            <h4 class="all" onClick="allItems(this)">All</h4>
+            <h4 class="active" onClick="activeItems(this)">Active</h4>
+            <h4 class="completed" onClick="complete(this)">Completed</h4>
           </div>
       
-          <div class="completed">
+          <div class="clear">
             <h4>Clear Completed</h4>
           </div>
       
@@ -64,9 +78,9 @@
  
   <div class="filterItem">
     <div class="filItems">
-      <h4>All</h4>
-      <h4>Active</h4>
-      <h4>Completed</h4>
+      <h4 class="all" onClick="allItems(this)">All</h4>
+      <h4 class="active" onClick="activeItems(this)">Active</h4>
+      <h4 class="completed" onClick="complete(this)">Completed</h4>
     </div>
   </div>
 
