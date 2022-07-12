@@ -30,7 +30,7 @@ function inputValidation(e){
         textInput.value = ''
         }
     }
-    
+
     window.location.reload();
     textInput.focus()
     addTasks()
@@ -172,10 +172,10 @@ dataStored()
 
 const sun = document.querySelector('.sun')   
 const moon = document.querySelector('.moon') 
-const header = document.querySelector('header')
-const main = document.querySelector('.container')
-const mainInput = document.querySelector('.mainInput')
-const input = document.querySelector('.input')
+// const header = document.querySelector('header')
+// const main = document.querySelector('.container')
+// const mainInput = document.querySelector('.mainInput')
+// const input = document.querySelector('.input')
 const fillItems = document.querySelector('.filItems')
 
 function themeToggle(e){
@@ -184,27 +184,26 @@ function themeToggle(e){
         moon.classList.remove('moon')
         sun.style.display = 'none'
         document.body.style.setProperty("--pri-bg", "rgb(223, 220, 220)")
-        document.documentElement.style.setProperty("--mobdark-bg", "--moblight-bg")
-        header.style.background = 'url(/images/bg-desktop-light.jpg)'
-        main.style.background = 'hsl(0, 0%, 98%)'
-        main.style.boxShadow = '0 5px 5px rgb(156, 153, 153)'
-        mainInput.style.background = 'hsl(0, 0%, 98%)'
-        input.style.background = 'hsl(0, 0%, 98%)'
-        input.style.color = 'hsl(236, 15%, 21%)'
-        fillItems.style.background = 'hsl(0, 0%, 98%)'
+        document.querySelector('header').style.background = 'url(/images/bg-desktop-light.jpg)', 'no-repeat', 'cover'
+        document.querySelector('.container').style.background = 'hsl(0, 0%, 98%)'
+        document.querySelector('.container').style.boxShadow = '0 5px 5px rgb(156, 153, 153)'
+        document.querySelector('.mainInput').style.background = 'hsl(0, 0%, 98%)'
+        document.querySelector('.input').style.background = 'hsl(0, 0%, 98%)'
+        document.querySelector('.input').style.color = 'hsl(236, 15%, 21%)'
+        document.querySelector('.filItems').style.background = 'hsl(0, 0%, 98%)'
         document.body.style.color =  'hsl(236, 15%, 21%)'
 
     }if(imgSelected == moon){
         sun.style.display = 'block'
         moon.classList.add('moon')
         document.body.style.setProperty( "--pri-bg", "hsl(235, 21%, 11%)")
-        header.style.background = 'url(/images/bg-desktop-dark.jpg)', 'no-repeat'
-        main.style.background = 'hsl(236, 15%, 21%)'
-        mainInput.style.background = 'hsl(236, 15%, 21%)'
-        input.style.background = 'hsl(236, 15%, 21%)'
-        main.style.boxShadow = 'none'
-        fillItems.style.background = 'hsl(236, 15%, 21%)'
-        input.style.color  = 'hsl(234, 39%, 85%)';
+        document.querySelector('header').style.background = 'url(/images/bg-desktop-dark.jpg)', 'no-repeat'
+        document.querySelector('.container').style.background = 'hsl(236, 15%, 21%)'
+        document.querySelector('.container').style.boxShadow = 'none'
+        document.querySelector('.mainInput').style.background = 'hsl(236, 15%, 21%)'
+        document.querySelector('.input').style.background = 'hsl(236, 15%, 21%)'
+        document.querySelector('.input').style.color  = 'hsl(234, 39%, 85%)';
+        document.querySelector('.filItems').style.background = 'hsl(236, 15%, 21%)'
         document.body.style.color =  'hsl(235, 10%, 45%)'
     }
     
