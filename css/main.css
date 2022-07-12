@@ -44,7 +44,9 @@ p{
 .active:hover{
     color: rgb(215, 214, 214);
 }
-
+.headerThemeLight {
+    background-image: url('../images/bg-mobile-light.jpg');
+}
 /* header */
 
 header{
