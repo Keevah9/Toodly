@@ -183,7 +183,7 @@ function themeToggle(e){
     if(imgSelected == sun){
         moon.classList.remove('moon')
         sun.style.display = 'none'
-        document.body.style.setProperty("--pri-bg", "rgb(223, 220, 220)")
+        document.body.style.background = "rgb(223, 220, 220)"
         document.querySelector('header').style.background = 'url(/images/bg-desktop-light.jpg)', 'no-repeat', 'cover'
         document.querySelector('.container').style.background = 'hsl(0, 0%, 98%)'
         document.querySelector('.container').style.boxShadow = '0 5px 5px rgb(156, 153, 153)'
@@ -196,7 +196,7 @@ function themeToggle(e){
     }if(imgSelected == moon){
         sun.style.display = 'block'
         moon.classList.add('moon')
-        document.body.style.setProperty( "--pri-bg", "hsl(235, 21%, 11%)")
+        document.body.style.background =   "hsl(235, 21%, 11%)"
         document.querySelector('header').style.background = 'url(/images/bg-desktop-dark.jpg)', 'no-repeat'
         document.querySelector('.container').style.background = 'hsl(236, 15%, 21%)'
         document.querySelector('.container').style.boxShadow = 'none'
