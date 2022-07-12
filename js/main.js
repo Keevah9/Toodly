@@ -9,11 +9,14 @@
 //delete all completed items    
 //toggle themes
 
+
+
 let todoItems = []
 
 const addText = document.querySelector('#addText')
 const textInput = document.querySelector('.input')
 const errMsg = document.querySelector('#errMsg')
+let itemLeft = document.querySelector('.left')
 
 //validate input
 function inputValidation(e){
@@ -26,8 +29,9 @@ function inputValidation(e){
         pushData()
         textInput.value = ''
         }
-        
     }
+    
+    window.location.reload();
     textInput.focus()
     addTasks()
 }
@@ -38,7 +42,6 @@ function pushData(){
         desc: textInput.value,
     })
     localStorage.setItem("todoItems", JSON.stringify(todoItems))
-    console.log(todoItems)
 }
 
 let parentItem = document.querySelector('.checkBoxes')
@@ -72,7 +75,6 @@ function checked(e){
         if(e.target.checked){
             let checkedTask = e.target.parentNode
             checkedTask.classList.toggle('complete')
-            console.log(checkedTask)
         }else{
             let checkedTask = e.target.parentNode
             checkedTask.classList.remove('complete')
@@ -82,23 +84,24 @@ function checked(e){
 
 //completed items ? checked
 function complete(e){
-    console.log(e)
     const checkedTask = Array.from(document.querySelectorAll('.items'))
     checkedTask.forEach(task=>{
-        task.classList.contains('complete') ? task.style.display = 'flex' : task.style.display = 'none'
-    })
-
-    localStorage.setItem("todoItems", JSON.stringify(todoItems))
+        task.classList.contains('complete') ? task.style.display = 'flex' : task.style.display = 'none'})
+    itemLeft.style.display = 'none'
 }
 
-//active items ? unckecked
+
+    
+//active items ? unchecked
 const active = document.querySelector('.active')
 function activeItems(e){
     const checkedTask = Array.from(document.querySelectorAll('.items'))
     checkedTask.forEach(item=>{
         item.classList.contains('complete') ? item.style.display = 'none' : item.style.display = 'flex'
     })
+    
 }
+
 
 //all items
 function allItems(e){
@@ -108,6 +111,11 @@ function allItems(e){
          console.log(item)
          item.style.display = 'flex' 
      })
+     let total = todoItems.length
+     itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
+        if(total === 0){
+        itemLeft.innerHTML = 'No Item left'
+    }
 }
 
 //clear completed tasks
@@ -119,12 +127,28 @@ function clearAll(){
     })
 }
 
+window.onload = function(left){
+    let itemLeft = document.querySelector('#itemLeft')
+    console.log(todoItems)
+    let total = todoItems.length 
+        itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
+        if(total === 0){
+        itemLeft.innerHTML = 'No Item left'
+    }
+}
+
 //del items
 function delItem(del){
         del.parentElement.remove()
         localStorage.setItem("todoItems", JSON.stringify(todoItems))
-        todoItems.splice(del.parentElement.remove(),1)
+        todoItems.splice(del.parentElement.remove(), 1)
         console.log(todoItems)
+        let total = todoItems.length  
+        itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
+        if(total === 0){
+        localStorage.clear()
+        itemLeft.innerHTML = 'No Item left'
+    }
 }
 
 //edit items
@@ -134,6 +158,7 @@ function editItems(edit){
         delItem(edit)
 }
 
+
 //get local storage
 function dataStored(){
     todoItems =  JSON.parse(localStorage.getItem("todoItems")) || []
@@ -142,23 +167,53 @@ function dataStored(){
 dataStored()
 
 
+
+// theme
+
+const sun = document.querySelector('.sun')   
+const moon = document.querySelector('.moon') 
+const header = document.querySelector('header')
+const main = document.querySelector('.container')
+const mainInput = document.querySelector('.mainInput')
+const input = document.querySelector('.input')
+const fillItems = document.querySelector('.filItems')
+
+function themeToggle(e){
+    let imgSelected = e.target
+    if(imgSelected == sun){
+        moon.classList.remove('moon')
+        sun.style.display = 'none'
+        document.body.style.setProperty("--pri-bg", "rgb(223, 220, 220)")
+        document.documentElement.style.setProperty("--mobdark-bg", "--moblight-bg")
+        header.style.background = 'url(/images/bg-desktop-light.jpg)'
+        main.style.background = 'hsl(0, 0%, 98%)'
+        main.style.boxShadow = '0 5px 5px rgb(156, 153, 153)'
+        mainInput.style.background = 'hsl(0, 0%, 98%)'
+        input.style.background = 'hsl(0, 0%, 98%)'
+        input.style.color = 'hsl(236, 15%, 21%)'
+        fillItems.style.background = 'hsl(0, 0%, 98%)'
+        document.body.style.color =  'hsl(236, 15%, 21%)'
+
+    }if(imgSelected == moon){
+        sun.style.display = 'block'
+        moon.classList.add('moon')
+        document.body.style.setProperty( "--pri-bg", "hsl(235, 21%, 11%)")
+        header.style.background = 'url(/images/bg-desktop-dark.jpg)', 'no-repeat'
+        main.style.background = 'hsl(236, 15%, 21%)'
+        mainInput.style.background = 'hsl(236, 15%, 21%)'
+        input.style.background = 'hsl(236, 15%, 21%)'
+        main.style.boxShadow = 'none'
+        fillItems.style.background = 'hsl(236, 15%, 21%)'
+        input.style.color  = 'hsl(234, 39%, 85%)';
+        document.body.style.color =  'hsl(235, 10%, 45%)'
+    }
+    
+}
+
+
+
 addText.addEventListener('click', inputValidation)
 parentItem.addEventListener('click', checked)
 clearCompleted.addEventListener('click', clearAll)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+sun.addEventListener('click', themeToggle)
+moon.addEventListener('click', themeToggle)
