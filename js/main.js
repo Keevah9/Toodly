@@ -172,20 +172,21 @@ dataStored()
 
 const sun = document.querySelector('.sun')   
 const moon = document.querySelector('.moon') 
-// const header = document.querySelector('header')
-// const main = document.querySelector('.container')
-// const mainInput = document.querySelector('.mainInput')
-// const input = document.querySelector('.input')
-const fillItems = document.querySelector('.filItems')
+// // const header = document.querySelector('header')
+// // const main = document.querySelector('.container')
+// // const mainInput = document.querySelector('.mainInput')
+// // const input = document.querySelector('.input')
+// const fillItems = document.querySelector('.filItems')
 
 function themeToggle(e){
     let imgSelected = e.target
     if(imgSelected == sun){
         moon.classList.remove('moon')
         sun.style.display = 'none'
-        document.body.style.background = "rgb(223, 220, 220)"
+        document.body.style.backgroundColor = "rgb(223, 220, 220)"
         document.querySelector('header').style.background = 'url(/images/bg-desktop-light.jpg)'
         document.querySelector('header').style.backgroundRepeat = 'no-repeat'
+        document.querySelector('header').style.backgroundSize = 'cover'
         document.querySelector('.container').style.background = 'hsl(0, 0%, 98%)'
         document.querySelector('.container').style.boxShadow = '0 5px 5px rgb(156, 153, 153)'
         document.querySelector('.mainInput').style.background = 'hsl(0, 0%, 98%)'
@@ -197,9 +198,10 @@ function themeToggle(e){
     }if(imgSelected == moon){
         sun.style.display = 'block'
         moon.classList.add('moon')
-        document.body.style.background = "hsl(235, 21%, 11%)"
+        document.body.style.backgroundColor = "hsl(235, 21%, 11%)"
         document.querySelector('header').style.background = 'url(/images/bg-desktop-dark.jpg)'
         document.querySelector('header').style.backgroundRepeat = 'no-repeat'
+        document.querySelector('header').style.backgroundSize = 'cover'
         document.querySelector('.container').style.background = 'hsl(236, 15%, 21%)'
         document.querySelector('.container').style.boxShadow = 'none'
         document.querySelector('.mainInput').style.background = 'hsl(236, 15%, 21%)'
