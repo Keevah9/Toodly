@@ -28,10 +28,11 @@ function inputValidation(e){
         errMsg.innerHTML = ''
         pushData()
         textInput.value = ''
+        // window.location.reload();
         }
     }
 
-    window.location.reload();
+    
     textInput.focus()
     addTasks()
 }
@@ -51,7 +52,7 @@ function addTasks(){
     parentItem.innerHTML = ''
     let displayItems =  todoItems.map(a => {
         return ( parentItem.innerHTML += `
-        <div class="items ">
+        <div class="items">
         <input type="checkbox" class="checkBox">
       
          <label for="checkbox"></label>
@@ -127,7 +128,8 @@ function clearAll(){
     })
 }
 
-window.onload = function(left){
+
+window.onload = function(){
     let itemLeft = document.querySelector('#itemLeft')
     console.log(todoItems)
     let total = todoItems.length 
@@ -135,7 +137,9 @@ window.onload = function(left){
         if(total === 0){
         itemLeft.innerHTML = 'No Item left'
     }
+    
 }
+
 
 //del items
 function delItem(del){
@@ -149,6 +153,7 @@ function delItem(del){
         localStorage.clear()
         itemLeft.innerHTML = 'No Item left'
     }
+    
 }
 
 //edit items
@@ -159,12 +164,6 @@ function editItems(edit){
 }
 
 
-//get local storage
-function dataStored(){
-    todoItems =  JSON.parse(localStorage.getItem("todoItems")) || []
-    addTasks()
-}
-dataStored()
 
 
 
@@ -173,51 +172,56 @@ dataStored()
 const sun = document.querySelector('.sun')   
 const moon = document.querySelector('.moon') 
 const header = document.querySelector('header')
-// // const main = document.querySelector('.container')
-// // const mainInput = document.querySelector('.mainInput')
-// // const input = document.querySelector('.input')
-// const fillItems = document.querySelector('.filItems')
+
+const themeSwitcher = document.querySelectorAll('.switch')
 
 function themeToggle(e){
-    let imgSelected = e.target
-    if(imgSelected == sun){
-        moon.classList.remove('moon')
+    let checked = e.target
+    console.log(checked)
+    if(checked == sun){
         sun.style.display = 'none'
-        document.body.style.backgroundColor = "rgb(223, 220, 220)"
-        // document.querySelector('header').style.background = 'url(/images/bg-desktop-light.jpg)'
+        moon.style.display = 'block'
+        document.body.classList.remove('dark')
+        document.body.classList.add('light')
         header.classList.add('headerThemeLight')
-        document.querySelector('header').style.backgroundRepeat = 'no-repeat'
-        document.querySelector('header').style.backgroundSize = 'cover'
-        document.querySelector('.container').style.background = 'hsl(0, 0%, 98%)'
-        document.querySelector('.container').style.boxShadow = '0 5px 5px rgb(156, 153, 153)'
-        document.querySelector('.mainInput').style.background = 'hsl(0, 0%, 98%)'
-        document.querySelector('.input').style.background = 'hsl(0, 0%, 98%)'
-        document.querySelector('.input').style.color = 'hsl(236, 15%, 21%)'
-        document.querySelector('.filItems').style.background = 'hsl(0, 0%, 98%)'
-        document.body.style.color =  'hsl(236, 15%, 21%)'
-
-    }if(imgSelected == moon){
+        localStorage.setItem("theme", "light")
+    }else{
         sun.style.display = 'block'
-        moon.classList.add('moon')
-        document.body.style.backgroundColor = "hsl(235, 21%, 11%)"
-        header.classList.remove('headerThemeLight')
-        document.querySelector('header').style.backgroundRepeat = 'no-repeat'
-        document.querySelector('header').style.backgroundSize = 'cover'
-        document.querySelector('.container').style.background = 'hsl(236, 15%, 21%)'
-        document.querySelector('.container').style.boxShadow = 'none'
-        document.querySelector('.mainInput').style.background = 'hsl(236, 15%, 21%)'
-        document.querySelector('.input').style.background = 'hsl(236, 15%, 21%)'
-        document.querySelector('.input').style.color  = 'hsl(234, 39%, 85%)';
-        document.querySelector('.filItems').style.background = 'hsl(236, 15%, 21%)'
-        document.body.style.color =  'hsl(235, 10%, 45%)'
+        moon.style.display = 'none'
+        document.body.classList.add('dark')
+        document.body.classList.remove('light')
+        localStorage.setItem("theme", "dark")
     }
-    
 }
 
+
+//get local storage
+function dataStored(){
+    todoItems =  JSON.parse(localStorage.getItem("todoItems")) || []
+    addTasks()
+    checkTheme()
+}
+dataStored()
+
+function checkTheme(){
+    
+    const localStorageTheme = localStorage.getItem("theme")
+    console.log(localStorage)
+    console.log(localStorageTheme)
+    if( localStorageTheme === "dark"){
+        document.body.className = localStorageTheme
+    }
+}
 
 
 addText.addEventListener('click', inputValidation)
 parentItem.addEventListener('click', checked)
 clearCompleted.addEventListener('click', clearAll)
-sun.addEventListener('click', themeToggle)
-moon.addEventListener('click', themeToggle)
+themeSwitcher.forEach(theme=>{
+    theme.addEventListener('click', themeToggle)
+})
+// sun.addEventListener('click', themeToggle)
+// moon.addEventListener('click', themeToggle)
+
+
+

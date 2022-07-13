@@ -5,7 +5,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-:root{
+/* :root{
     --primary-color: white;
     --pri-bg:hsl(235, 21%, 11%);
     --color:hsl(236, 15%, 21%);
@@ -13,11 +13,27 @@
     --moblight-bg: url('../images/bg-mobile-light.jpg');
     --mobdark--bg: url('../images/bg-mobile-dark.jpg');
     --dklight-bg:url('../images/bg-desktop-light.jpg')
+} */
+
+.dark{
+    --body-color: hsl(235, 21%, 11%);
+    --pri-text-color: white;
+    --dk-bg: url('../images/bg-desktop-dark.jpg'); 
+    --main-color: hsl(236, 15%, 21%);
+    --shadow: none;
+}
+.light{
+    --body-color: rgb(238, 235, 235);
+    --pri-text-color: hsl(236, 15%, 21%);
+    --dk-bg: url('../images/bg-desktop-light.jpg');
+    --main-color: white;
+    --shadow: 0 0 5px rgb(237, 235, 235);
+
 }
 body{
     width: 100%;
     height: 100vh;
-    background-color: var(--pri-bg);
+    background-color: var(--body-color);
     font-family: 'Josefins', sans-serif;
     color: hsl(234, 39%, 85%);
 }
@@ -45,12 +61,15 @@ p{
     color: rgb(215, 214, 214);
 }
 .headerThemeLight {
-    background-image: url('../images/bg-mobile-light.jpg');
+    background-image: var(--dk-bg);
+}
+.headerThemeDark{
+    background-image: var(--dk-bg);
 }
 /* header */
 
 header{
-    background-image: var(--dkdark-bg);
+    /* background-image: url('../images/bg-desktop-dark.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -79,13 +98,13 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: hsl(236, 15%, 21%);
+    background-color: var(--main-color);
 }
 main .input{
     width: 96%;
     height: auto;
     padding: 2rem;
-    background-color: hsl(236, 15%, 21%);
+    background-color: var(--main-color);
     border: none;
     outline: none;
     font-size: 1.6rem;
@@ -97,6 +116,11 @@ main .input{
 img{
     width: 3rem;
     height: 2rem;
+    
+}
+img:hover{
+    transform: rotate(360deg);
+    transition: 0.5s;
 }
 .moon{
     display: none;
@@ -113,7 +137,7 @@ img{
 }
 .container{
     min-height: 5vh;
-    background-color: var(--color);
+    background-color: var(--main-color);
     max-width: 55rem;
     border-radius: 5px;
 }
@@ -250,7 +274,7 @@ footer{
         margin-bottom: 0;
         font-size: 1.4rem;
         color: hsl(235, 10%, 45%);
-        background-color: var(--color);
+        background-color: var(--main-color);
         height: 5vh;
         border-radius: 5px;
     }

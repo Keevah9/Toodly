@@ -7,16 +7,18 @@
   <link rel="stylesheet" href="./css/main.css">
   <title>Todo app</title>
 </head>
-<body>
+<body class="dark">
 
-  <header>
+  <header class="headerThemeDark">
 
     <main>
       
       <div class="mainHeader">
         <h1>TODO</h1>
-        <img src="./images/icon-sun.svg" alt="icon-moon" class="sun">
-        <img src="./images/icon-moon.svg" alt="icon-sun" class="moon">
+        <div class="switch">
+          <img src="./images/icon-sun.svg" alt="icon-moon" class="sun" data-img="sun">
+          <img src="./images/icon-moon.svg" alt="icon-sun" class="moon" data-img="moon">
+        </div>
       </div>
       <span id="errMsg"></span>
       <div class="mainInput">
