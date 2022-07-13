@@ -35,7 +35,7 @@ body{
     height: 100vh;
     background-color: var(--body-color);
     font-family: 'Josefins', sans-serif;
-    color: hsl(234, 39%, 85%);
+    color: var(--pri-text-color);
 }
 html{
     font-size: 62.5%;

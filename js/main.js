@@ -28,7 +28,7 @@ function inputValidation(e){
         errMsg.innerHTML = ''
         pushData()
         textInput.value = ''
-        // window.location.reload();
+        window.location.reload();
         }
     }
 
@@ -208,8 +208,13 @@ function checkTheme(){
     const localStorageTheme = localStorage.getItem("theme")
     console.log(localStorage)
     console.log(localStorageTheme)
-    if( localStorageTheme === "dark"){
+    if(localStorageTheme === "dark"){
         document.body.className = localStorageTheme
+    }else{
+        sun.style.display = 'none'
+        moon.style.display = 'block'
+        document.body.className = localStorageTheme
+
     }
 }
 
