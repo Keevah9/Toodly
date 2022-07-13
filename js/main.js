@@ -28,6 +28,7 @@ function inputValidation(e){
         errMsg.innerHTML = ''
         pushData()
         textInput.value = ''
+        
         window.location.reload();
         }
     }
@@ -89,6 +90,12 @@ function complete(e){
     checkedTask.forEach(task=>{
         task.classList.contains('complete') ? task.style.display = 'flex' : task.style.display = 'none'})
     itemLeft.style.display = 'none'
+
+    let total = todoItems.length 
+        // itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
+        if(total === 0){
+        itemLeft.innerHTML = 'No Item left'
+    }
 }
 
 
@@ -117,6 +124,7 @@ function allItems(e){
         if(total === 0){
         itemLeft.innerHTML = 'No Item left'
     }
+    calStorage.setItem("todoItems", JSON.stringify(todoItems)) 
 }
 
 //clear completed tasks
@@ -125,20 +133,23 @@ function clearAll(){
     let checkedTask = Array.from(document.querySelectorAll('.items'))
     checkedTask.forEach(item=>{
         item.remove()
+         localStorage.setItem("todoItems", JSON.stringify(todoItems))
     }) 
-    localStorage.removeItem("todoItems")
+    
     itemLeft.innerHTML = 'No Item left'
 }
 
+    // let itemLeft = document.querySelector('#itemLeft')
 
 window.onload = function(){
-    let itemLeft = document.querySelector('#itemLeft')
+
     console.log(todoItems)
     let total = todoItems.length 
         itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
         if(total === 0){
         itemLeft.innerHTML = 'No Item left'
     }
+    
 }
 
 
