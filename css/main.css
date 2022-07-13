@@ -244,7 +244,7 @@ input[type=checkbox]:checked::after {
 footer{
     text-align: center;
     font-size: 1.4rem;
-    padding-top: 2rem;
+    padding: 2rem 0;
     color: hsl(234, 11%, 52%);;
 }
 

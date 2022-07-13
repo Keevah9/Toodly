@@ -125,7 +125,9 @@ function clearAll(){
     let checkedTask = Array.from(document.querySelectorAll('.items'))
     checkedTask.forEach(item=>{
         item.remove()
-    })
+    }) 
+    localStorage.clear()
+    itemLeft.innerHTML = 'No Item left'
 }
 
 
@@ -162,9 +164,6 @@ function editItems(edit){
         textInput.value = selectItem.children[2].innerHTML
         delItem(edit)
 }
-
-
-
 
 
 // theme
@@ -211,7 +210,7 @@ function checkTheme(){
     if(localStorageTheme === "dark"){
         document.body.className = localStorageTheme
     }else{
-        sun.style.display = 'none'
+         sun.style.display = 'none'
         moon.style.display = 'block'
         document.body.className = localStorageTheme
 
