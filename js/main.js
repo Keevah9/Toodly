@@ -126,7 +126,7 @@ function clearAll(){
     checkedTask.forEach(item=>{
         item.remove()
     }) 
-    localStorage.clear()
+    localStorage.removeItem("todoItems")
     itemLeft.innerHTML = 'No Item left'
 }
 
@@ -139,7 +139,6 @@ window.onload = function(){
         if(total === 0){
         itemLeft.innerHTML = 'No Item left'
     }
-    
 }
 
 
@@ -152,10 +151,10 @@ function delItem(del){
         let total = todoItems.length  
         itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
         if(total === 0){
-        localStorage.clear()
+        localStorage.removeItem("todoItems")
         itemLeft.innerHTML = 'No Item left'
     }
-    
+    console.log(localStorage)
 }
 
 //edit items
