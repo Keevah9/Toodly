@@ -124,25 +124,26 @@ function allItems(e){
         if(total === 0){
         itemLeft.innerHTML = 'No Item left'
     }
-    calStorage.setItem("todoItems", JSON.stringify(todoItems)) 
+    localStorage.setItem("todoItems", JSON.stringify(todoItems)) 
 }
 
 //clear completed tasks
 const clearCompleted = document.querySelector('.clear')
-function clearAll(){
+function clearAll(e){
     let checkedTask = Array.from(document.querySelectorAll('.items'))
     checkedTask.forEach(item=>{
+       
         item.remove()
-         localStorage.setItem("todoItems", JSON.stringify(todoItems))
+        
+   localStorage.setItem("todoItems", JSON.stringify(todoItems))
     }) 
-    
+   
+    window.location.reload()
     itemLeft.innerHTML = 'No Item left'
 }
 
-    // let itemLeft = document.querySelector('#itemLeft')
 
 window.onload = function(){
-
     console.log(todoItems)
     let total = todoItems.length 
         itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
@@ -156,8 +157,9 @@ window.onload = function(){
 //del items
 function delItem(del){
         del.parentElement.remove()
-        localStorage.setItem("todoItems", JSON.stringify(todoItems))
+        
         todoItems.splice(del.parentElement.remove(), 1)
+        localStorage.setItem("todoItems", JSON.stringify(todoItems))
         console.log(todoItems)
         let total = todoItems.length  
         itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
