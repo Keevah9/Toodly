@@ -30,9 +30,8 @@ function inputValidation(e){
         textInput.value = ''
         }
     }
-
-    
     textInput.focus()
+     
     addTasks()
 }
 
@@ -63,18 +62,15 @@ function addTasks(){
     `)
     })
     displayItems = displayItems.join('')
-    
 }
 
 
 function itemsLeft(){
     console.log(todoItems)
     let total = 0
-        // itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
         const checkedTask = Array.from(document.querySelectorAll('.items'))
-        checkedTask.forEach(item => !item.classList.contains('complete') ? total++ : '')
+        checkedTask.forEach(item => !item.classList.contains('complete') ? total++ : '' )
         itemLeft.innerHTML = total + ' item left'
-        // itemLeft.innerHTML = total ++
         if(total > 1){
         itemLeft.innerHTML = total + ' Items left'
     }else if(total === 0){
@@ -90,13 +86,9 @@ function checked(e){
     let checkBoxes = document.querySelectorAll('.checkBox')
     checkBoxes.forEach(item=>{
         if(e.target !== item)return
-        if(e.target.checked){
-            let checkedTask = e.target.parentNode
-            checkedTask.classList.toggle('complete')
-        }else{
-            let checkedTask = e.target.parentNode
-            checkedTask.classList.remove('complete')
-        }
+        let checkedTask = e.target.parentNode
+        currentItem = e.target.checked
+        currentItem ? checkedTask.classList.toggle('complete'): checkedTask.classList.remove('complete')
     })
 }
 
@@ -104,7 +96,9 @@ function checked(e){
 function complete(e){
     const checkedTask = Array.from(document.querySelectorAll('.items'))
     checkedTask.forEach(task=>{
-        task.classList.contains('complete') ? task.style.display = 'flex' : task.style.display = 'none'})
+        task.classList.contains('complete') ? task.style.display = 'flex' : task.style.display = 'none'
+        console.log(task)
+        })    
     }
 
 
@@ -143,28 +137,26 @@ function clearAll(e){
     let checkedTask = document.querySelectorAll('.complete')
     // console.log(checkedTask)
     checkedTask.forEach(item=>{
+        console.log(item)
         todoItems.splice(item.remove(), 1)
         localStorage.setItem("todoItems", JSON.stringify(todoItems))
     }) 
 }
 
 
-
 //del items
 function delItem(del){
         del.parentElement.remove()
-        
         todoItems.splice(del.parentElement.remove(), 1)
         localStorage.setItem("todoItems", JSON.stringify(todoItems))
-        console.log(todoItems)
-        let total = todoItems.length  
-        itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
-        if(total === 0){
-        localStorage.removeItem("todoItems")
-        itemLeft.innerHTML = 'No Item left'
+
+        // let total = todoItems.length  
+        // itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
+        // if(total === 0){
+        // localStorage.removeItem("todoItems")
+        // itemLeft.innerHTML = 'No Item left'
     }
-    console.log(localStorage)
-}
+
 
 //edit items
 function editItems(edit){
@@ -173,9 +165,7 @@ function editItems(edit){
         delItem(edit)
 }
 
-
 // theme
-
 const sun = document.querySelector('.sun')   
 const moon = document.querySelector('.moon') 
 const header = document.querySelector('header')
@@ -199,6 +189,19 @@ function themeToggle(e){
         document.body.classList.remove('light')
         localStorage.setItem("theme", "dark")
     }
+    
+}
+
+function checkTheme(){
+    const localStorageTheme = localStorage.getItem("theme")
+    console.log(localStorageTheme)
+    if(localStorageTheme === "dark"){
+        document.body.className = localStorageTheme
+    }else{
+        sun.style.display = 'none'
+        moon.style.display = 'block'
+        document.body.className = localStorageTheme
+    }
 }
 
 
@@ -210,20 +213,7 @@ function dataStored(){
 }
 dataStored()
 
-function checkTheme(){
-    
-    const localStorageTheme = localStorage.getItem("theme")
-    console.log(localStorage)
-    console.log(localStorageTheme)
-    if(localStorageTheme === "dark"){
-        document.body.className = localStorageTheme
-    }else{
-         sun.style.display = 'none'
-        moon.style.display = 'block'
-        document.body.className = localStorageTheme
 
-    }
-}
 
 
 addText.addEventListener('click', inputValidation)
@@ -233,8 +223,6 @@ themeSwitcher.forEach(theme=>{
     theme.addEventListener('click', themeToggle)
 })
 
-// sun.addEventListener('click', themeToggle)
-// moon.addEventListener('click', themeToggle)
 
 
 
