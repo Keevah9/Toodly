@@ -28,8 +28,6 @@ function inputValidation(e){
         errMsg.innerHTML = ''
         pushData()
         textInput.value = ''
-        
-        window.location.reload();
         }
     }
 
@@ -69,6 +67,24 @@ function addTasks(){
 }
 
 
+function itemsLeft(){
+    console.log(todoItems)
+    let total = 0
+        // itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
+        const checkedTask = Array.from(document.querySelectorAll('.items'))
+        checkedTask.forEach(item => !item.classList.contains('complete') ? total++ : '')
+        itemLeft.innerHTML = total + ' item left'
+        // itemLeft.innerHTML = total ++
+        if(total > 1){
+        itemLeft.innerHTML = total + ' Items left'
+    }else if(total === 0){
+        itemLeft.innerHTML = 'No item left'
+    }
+    
+}
+setInterval(itemsLeft, 500);
+
+
 //check items
 function checked(e){
     let checkBoxes = document.querySelectorAll('.checkBox')
@@ -89,14 +105,7 @@ function complete(e){
     const checkedTask = Array.from(document.querySelectorAll('.items'))
     checkedTask.forEach(task=>{
         task.classList.contains('complete') ? task.style.display = 'flex' : task.style.display = 'none'})
-    itemLeft.style.display = 'none'
-
-    let total = todoItems.length 
-        // itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
-        if(total === 0){
-        itemLeft.innerHTML = 'No Item left'
     }
-}
 
 
     
@@ -119,39 +128,26 @@ function allItems(e){
          console.log(item)
          item.style.display = 'flex' 
      })
-     let total = todoItems.length
-     itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
-        if(total === 0){
-        itemLeft.innerHTML = 'No Item left'
-    }
+    
     localStorage.setItem("todoItems", JSON.stringify(todoItems)) 
 }
+
+//select the checked item
+//remove it from local storage
+//remove from all
+//remove from todo items
 
 //clear completed tasks
 const clearCompleted = document.querySelector('.clear')
 function clearAll(e){
-    let checkedTask = Array.from(document.querySelectorAll('.items'))
+    let checkedTask = document.querySelectorAll('.complete')
+    // console.log(checkedTask)
     checkedTask.forEach(item=>{
-       
-        item.remove()
-        
-   localStorage.setItem("todoItems", JSON.stringify(todoItems))
+        todoItems.splice(item.remove(), 1)
+        localStorage.setItem("todoItems", JSON.stringify(todoItems))
     }) 
-   
-    window.location.reload()
-    itemLeft.innerHTML = 'No Item left'
 }
 
-
-window.onload = function(){
-    console.log(todoItems)
-    let total = todoItems.length 
-        itemLeft.innerHTML = total > 1 ? total + ' Items left'  : total + ' Item left'
-        if(total === 0){
-        itemLeft.innerHTML = 'No Item left'
-    }
-    
-}
 
 
 //del items
@@ -236,6 +232,7 @@ clearCompleted.addEventListener('click', clearAll)
 themeSwitcher.forEach(theme=>{
     theme.addEventListener('click', themeToggle)
 })
+
 // sun.addEventListener('click', themeToggle)
 // moon.addEventListener('click', themeToggle)
 
